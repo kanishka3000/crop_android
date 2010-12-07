@@ -12,22 +12,22 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 public class HttpConnect {
-	public static int CROP_LOCATION = 0;
-	public static int CROP_CROP = 1;
-	private String URL = "http://localhost:8080/myaxis/getCropService?service=location&id=Dambulla";
+	private String URL = null;
 
-	public String getCropString(int ServiceType, String id)
+	public InputStream getString(String ip)
 			throws ClientProtocolException, IOException {
+		URL=ip;
 		HttpClient client = new DefaultHttpClient();
 		HttpGet get = new HttpGet(URL);
 		HttpResponse response = client.execute(get);
 		InputStream in = response.getEntity().getContent();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		char[] chars = new char[20];
-		StringBuffer buff = new StringBuffer();
-		while (reader.read(chars) != -1) {
-			buff.append(new String(chars));
-		}
-		return buff.toString();
+		return in;
+//		char[] chars = new char[20];
+//		StringBuffer buff = new StringBuffer();
+//		while (reader.read(chars) != -1) {
+//			buff.append(new String(chars));
+//		}
+//		return buff.toString();
 	}
 }
