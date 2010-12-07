@@ -10,5 +10,11 @@ public class CropInformation extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        Crop crop=new Crop();
+        try{
+        crop.getCrops(Crop.GET_FROM_LOCATION, "Dambulla");
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
     }
 }
