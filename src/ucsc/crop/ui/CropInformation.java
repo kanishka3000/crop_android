@@ -1,5 +1,8 @@
-package ucsc.crop;
+package ucsc.crop.ui;
 
+import ucsc.crop.Crop;
+import ucsc.crop.R;
+import ucsc.crop.R.layout;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
