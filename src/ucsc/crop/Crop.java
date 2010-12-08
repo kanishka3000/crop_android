@@ -21,9 +21,11 @@ public class Crop {
 	public String Location;
 	public String Price;
 	public String Name;
+
 	public Crop() {
 
 	}
+
 	public List getCrops(int type, String value) throws Exception {
 		if (type == GET_FROM_CROP) {
 			URL += "service=crop&id=" + value;
