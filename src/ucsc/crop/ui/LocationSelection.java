@@ -60,7 +60,7 @@ public class LocationSelection extends Activity {
 								.sendMessage(fetchAndDisplayLocationData
 										.obtainMessage());
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 
