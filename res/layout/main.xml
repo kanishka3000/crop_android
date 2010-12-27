@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-     
-    
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout android:orientation="horizontal" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" >
+		
+		<Button android:text="previous" android:id="@+id/prevbutton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+			<Button android:text="next" android:id="@+id/nextbutton"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>
+
+
+	<TextView android:id="@+id/topic" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="" />
+	<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/gridtext" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:stretchMode="columnWidth"
+		android:gravity="center" />
+
+
 </LinearLayout>

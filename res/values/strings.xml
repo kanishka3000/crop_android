@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, CropInformation!</string>
-    <string name="app_name">CropInformation</string>
+	<string name="hello">Crop Information!</string>
+	<string name="selectcrop">Select a crop</string>
+	<string name="selectlocation">Select a location</string>
+	<string name="enterprice">Enter price</string>
+	<string name="buttonsearch">Search</string>
+	<string name="radiolessthan">Less than</string>
+	<string name="radiogreaterthan">Greater than</string>
+	<string name="app_name">CropInformation</string>
+	<string name="pricetextdefaultvalue">0</string>
+
 </resources>
