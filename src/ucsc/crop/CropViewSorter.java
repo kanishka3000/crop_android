@@ -18,7 +18,13 @@ public class CropViewSorter extends BaseAdapter {
 	Context context;
 	int currentlocation = 0;
 
-	public CropViewSorter(Map<String, ArrayList<Crop>> map, Context con) {
+	int sortoption = 0;
+	public static int SORTED_BY_CROP = 0;
+	public static int SORTED_BY_LOCATION = 1;
+
+	public CropViewSorter(Map<String, ArrayList<Crop>> map, Context con,
+			int sortedby) {
+		this.sortoption = sortedby;
 		context = con;
 		this.map = map;
 		int i = 0;
@@ -30,7 +36,13 @@ public class CropViewSorter extends BaseAdapter {
 	}
 
 	public String getCurrentTopic() {
-		return map.get(counter.get(currentlocation)).get(0).Name;
+		if (counter.keySet().size() == 0) {
+			return "No Applicable data";
+		} else if (sortoption == SORTED_BY_CROP) {
+			return map.get(counter.get(currentlocation)).get(0).Name;
+		} else {
+			return map.get(counter.get(currentlocation)).get(0).Location;
+		}
 	}
 
 	public void next() {
@@ -47,7 +59,11 @@ public class CropViewSorter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return map.get(counter.get(currentlocation)).size();
+		if (map.size() > 0) {
+			return map.get(counter.get(currentlocation)).size();
+		} else {
+			return 0;
+		}
 	}
 
 	@Override
@@ -67,7 +83,12 @@ public class CropViewSorter extends BaseAdapter {
 		lay.setOrientation(LinearLayout.HORIZONTAL);
 		TextView view = new TextView(context);
 		view.setPadding(10, 10, 10, 3);
-		view.setText(map.get(counter.get(currentlocation)).get(arg0).Location);
+		if (this.sortoption == SORTED_BY_CROP) {
+			view
+					.setText(map.get(counter.get(currentlocation)).get(arg0).Location);
+		} else {
+			view.setText(map.get(counter.get(currentlocation)).get(arg0).Name);
+		}
 		lay.addView(view);
 		TextView view2 = new TextView(context);
 		view2.setText(map.get(counter.get(currentlocation)).get(arg0).Price);

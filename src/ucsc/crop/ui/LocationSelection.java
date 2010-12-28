@@ -41,6 +41,7 @@ public class LocationSelection extends Activity {
 
 	Crop crops;
 	static ArrayList<Crop> CropResult;
+
 	public LocationSelection() {
 		selectedCrops = new HashSet();
 		selectedLocations = new HashSet();
@@ -49,16 +50,24 @@ public class LocationSelection extends Activity {
 
 	public boolean selectev = true;
 
+	public void onResume() {
+		super.onResume();
+		selectedCrops.clear();
+		selectedLocations.clear();
+
+	}
+
 	public void onCreate(Bundle savedInstanceState) {
 		sele = this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.locationselection);
+
 		locationselect = (Spinner) findViewById(R.id.cropspinner);
 		cropselect = (Spinner) findViewById(R.id.locationspinner);
 		pricetext = (EditText) findViewById(R.id.pricetext);
 		gp = (RadioGroup) findViewById(R.id.RadioGroup01);
-		lessthan=(RadioButton)findViewById(R.id.lessthan);
-		greaterthan=(RadioButton)findViewById(R.id.greaterthan);
+		lessthan = (RadioButton) findViewById(R.id.lessthan);
+		greaterthan = (RadioButton) findViewById(R.id.greaterthan);
 		okbutton = (Button) findViewById(R.id.Button01);
 		okbutton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -69,22 +78,30 @@ public class LocationSelection extends Activity {
 				} else {
 					pricetype = "gt";
 				}
-				String price=null;
-				if(!pricetext.getText().toString().equals("0")){
-					 price = pricetext.getText().toString();
+				String price = null;
+				if (!pricetext.getText().toString().equals("0")) {
+					price = pricetext.getText().toString();
 				}
-				
+				String[] selectedcroparray = null;
+				String[] selectedlocationarray = null;
+				if (selectedCrops.size() > 0) {
+					selectedcroparray = selectedCrops.toArray(new String[1]);
+				}
+				if (selectedLocations.size() > 0) {
+					selectedlocationarray = selectedLocations
+							.toArray(new String[1]);
+				}
+
 				try {
-					ArrayList<Crop> cp = crops.getCropValue(
-							(String[]) selectedCrops.toArray(new String[1]),
-							(String[]) selectedLocations.toArray(new String[1]), price,
-							pricetype);
+					ArrayList<Crop> cp = crops.getCropValue(selectedcroparray,
+							selectedlocationarray, price, pricetype);
 					System.out.println(cp);
-					CropResult=cp;
-					Intent nextin=new Intent(arg0.getContext(),CropInformation.class);
+					CropResult = cp;
+					Intent nextin = new Intent(arg0.getContext(),
+							CropInformation.class);
 					startActivityForResult(nextin, 0);
 				} catch (Exception e) {
-					System.out.println(e.getMessage());
+					// System.out.println(e.getMessage());
 					e.printStackTrace();
 				}
 
@@ -97,8 +114,11 @@ public class LocationSelection extends Activity {
 					int arg2, long arg3) {
 				Crop cr = (Crop) arg0.getItemAtPosition(arg2);
 				System.out.println(cr.Id + "was selected" + cr.Name);
-				selectedCrops.add(cr.Id);
+				if (cr.Id != "NA") {
+					selectedCrops.add(cr.Id);
+				}
 			}
+
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -110,8 +130,11 @@ public class LocationSelection extends Activity {
 					int arg2, long arg3) {
 				String location = (String) arg0.getItemAtPosition(arg2);
 				System.out.println(location + "locationselect");
-				selectedLocations.add(location);
+				if (!location.equals("NA")) {
+					selectedLocations.add(location);
+				}
 			}
+
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 

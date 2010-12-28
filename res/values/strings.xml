@@ -5,6 +5,7 @@
 	<string name="selectlocation">Select a location</string>
 	<string name="enterprice">Enter price</string>
 	<string name="buttonsearch">Search</string>
+	<string name="buttonhome">Back to search</string>
 	<string name="radiolessthan">Less than</string>
 	<string name="radiogreaterthan">Greater than</string>
 	<string name="app_name">CropInformation</string>

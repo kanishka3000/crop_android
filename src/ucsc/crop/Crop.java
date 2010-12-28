@@ -52,6 +52,7 @@ public class Crop {
 				fillcropsort(map, crop, cropname);
 			} else {
 				String croplocation = crop.Location;
+				System.out.println(croplocation);
 				fillcropsort(map, crop, croplocation);
 			}
 		}
@@ -81,12 +82,12 @@ public class Crop {
 			throws Exception {
 		HttpConnect connection = new HttpConnect();
 		boolean first = true;
-		if (crop_list != null) {
+		if (crop_list != null && crop_list.length > 0) {
 			first = false;
 			URL += (CROP_VALUES + "=");
 			filURL(crop_list);
 		}
-		if (location_list != null) {
+		if (location_list != null && location_list.length > 0) {
 			if (!first)
 				URL += "&";
 			URL += (LOCATION_VALUES + "=");
@@ -98,10 +99,11 @@ public class Crop {
 			URL += PRICE_VALUES + "=" + price + "&" + PRICE_TYPE + "="
 					+ price_type;
 		}
-
+		System.out.println(URL);
 		InputStream in = connection.getString(URL);
 
 		ArrayList<Crop> crops = parseXml(in);
+
 		// ArrayList<Crop> croplist = parseXMLforList(in);
 		return crops;
 	}
@@ -110,6 +112,13 @@ public class Crop {
 			throws XmlPullParserException, IOException {
 		KXmlParser parse = new KXmlParser();
 		ArrayList<Crop> croplist = new ArrayList<Crop>();
+		Crop cr = new Crop();
+		cr.Id = "NA";
+		cr.Name = "NA";
+		cr.Location = "NA";
+		cr.Price = "NA";
+		croplist.add(cr);
+
 		parse.setInput(new InputStreamReader(in));
 		parse.nextTag();
 		parse.require(XmlPullParser.START_TAG, null, "list");
