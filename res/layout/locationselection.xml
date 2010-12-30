@@ -6,13 +6,18 @@
 
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="@string/selectcrop" />
-	<Spinner android:id="@+id/cropspinner" android:layout_width="wrap_content"
+	<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<Spinner android:id="@+id/locationspinner" android:layout_width="wrap_content"
 		android:layout_height="wrap_content"></Spinner>
+		<ListView android:id="@+id/croplister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
+		</LinearLayout>
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="@string/selectlocation" />
-
-	<Spinner android:id="@+id/locationspinner"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<Spinner android:id="@+id/cropspinner"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"></Spinner>
+		<ListView android:id="@+id/locationlister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
+		</LinearLayout>
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="@string/enterprice" />
 
