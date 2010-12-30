@@ -1,6 +1,8 @@
 package ucsc.crop;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,6 +18,9 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import ucsc.crop.util.CProperties;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap.CompressFormat;
 import android.util.Log;
 
 public class Crop {
@@ -28,6 +33,9 @@ public class Crop {
 	public static final String PRICE_TYPE = "pricetype";
 
 	public static final String LIST_SERVICE = "service";
+	
+	public Bitmap cropimage=null;
+	String URLIMG=null;
 
 	public static final int SORTBY_CROP = 1;
 	public static final int SORTBY_LOCATION = 2;
@@ -39,7 +47,8 @@ public class Crop {
 	public String Id;
 
 	public Crop() {
-		URL = CProperties.getInstance().getProperty("server");
+		URL = CProperties.getInstance().getProperty("server")+"/getCropService?";
+		URLIMG=CProperties.getInstance().getProperty("server")+"/pics/CDM.png";
 	}
 
 	public static Map<String, ArrayList<Crop>> sort(int method,
@@ -179,13 +188,33 @@ public class Crop {
 			String price = parse.nextText();
 			crop.Price = price;
 			parse.nextTag();
+			String id = parse.nextText();
+			crop.Id = id;		
+			parse.nextTag();
 			String name = parse.nextText();
 			crop.Name = name;
 			parse.nextTag();
+			fixImage(crop);
+			
 			croplist.add(crop);
 			parse.require(XmlPullParser.END_TAG, null, "crop");
 		}
+		
 		return (ArrayList<Crop>) croplist;
+	}
+
+	private void fixImage(Crop crop) throws ClientProtocolException,
+			IOException {
+		crop.cropimage=BitmapFactory.decodeStream(new HttpConnect().getString(URLIMG));
+		
+//		File fi=new File("croidm");
+//		FileOutputStream ou= new FileOutputStream(fi);
+//		crop.cropimage.compress(CompressFormat.PNG, 75, ou);
+//		if(!fi.exists()){
+//			ou.flush();
+//			ou.close();
+//		}
+		
 	}
 
 	public String toString() {

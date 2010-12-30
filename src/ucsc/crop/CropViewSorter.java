@@ -1,13 +1,26 @@
 package ucsc.crop;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.client.ClientProtocolException;
+
+import ucsc.crop.util.CProperties;
+
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap.CompressFormat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,9 +34,11 @@ public class CropViewSorter extends BaseAdapter {
 	int sortoption = 0;
 	public static int SORTED_BY_CROP = 0;
 	public static int SORTED_BY_LOCATION = 1;
+	public String URLIMG=null;
 
 	public CropViewSorter(Map<String, ArrayList<Crop>> map, Context con,
 			int sortedby) {
+		URLIMG=CProperties.getInstance().getProperty("server")+"/pics/CDM.png";
 		this.sortoption = sortedby;
 		context = con;
 		this.map = map;
@@ -82,7 +97,7 @@ public class CropViewSorter extends BaseAdapter {
 		LinearLayout lay = new LinearLayout(context);
 		lay.setOrientation(LinearLayout.HORIZONTAL);
 		TextView view = new TextView(context);
-		view.setPadding(10, 10, 10, 3);
+		view.setPadding(10, 10, 10, 10);
 		if (this.sortoption == SORTED_BY_CROP) {
 			view
 					.setText(map.get(counter.get(currentlocation)).get(arg0).Location);
@@ -91,8 +106,39 @@ public class CropViewSorter extends BaseAdapter {
 		}
 		lay.addView(view);
 		TextView view2 = new TextView(context);
+		view2.setPadding(10, 10, 10, 10);
 		view2.setText(map.get(counter.get(currentlocation)).get(arg0).Price);
+		ImageView imview=new ImageView(context);
+		String ids=map.get(counter.get(currentlocation)).get(arg0).Id;
+//		try {
+//			FileInputStream fi=context.openFileInput(ids+".png");
+//			imview.setImageBitmap(BitmapFactory.decodeStream(fi));
+//			System.out.println("image was found in local system");
+//		} catch (FileNotFoundException e) {
+//			try {
+//				Bitmap mp=BitmapFactory.decodeStream(new HttpConnect().getString(URLIMG));
+//				imview.setImageBitmap(mp);
+//				FileOutputStream fi2=context.openFileOutput(ids,Context.MODE_WORLD_READABLE);
+//				mp.compress(CompressFormat.PNG, 70, fi2);
+//				fi2.flush();
+//				fi2.close();
+//			} catch (ClientProtocolException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			} catch (IOException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+//			e.printStackTrace();
+//		}
+//		
+		
+		
+		imview.setImageBitmap(map.get(counter.get(currentlocation)).get(arg0).cropimage);
+		
 		lay.addView(view2);
+		lay.addView(imview);
+		
 		return lay;
 	}
 
