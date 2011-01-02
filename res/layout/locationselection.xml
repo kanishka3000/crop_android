@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content" android:layout_height="wrap_content"
-	android:orientation="vertical">
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="@drawable/podda2"
+	>
 
 
-	<TextView android:layout_width="fill_parent"
+	<TextView android:layout_width="fill_parent" android:textColor="#000"
 		android:layout_height="wrap_content" android:text="@string/selectcrop" />
 	<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
 	<Spinner android:id="@+id/locationspinner" android:layout_width="wrap_content"
+	android:textColor="#000"
 		android:layout_height="wrap_content"></Spinner>
-		<ListView android:id="@+id/croplister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
+		<ListView android:textColor="#000" android:id="@+id/croplister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
 		</LinearLayout>
-	<TextView android:layout_width="fill_parent"
+	<TextView android:layout_width="fill_parent" android:textColor="#000"
 		android:layout_height="wrap_content" android:text="@string/selectlocation" />
 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
 	<Spinner android:id="@+id/cropspinner"
+	android:textColor="#000"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"></Spinner>
-		<ListView android:id="@+id/locationlister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
+		<ListView android:textColor="#000" android:id="@+id/locationlister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
 		</LinearLayout>
-	<TextView android:layout_width="fill_parent"
+	<TextView android:layout_width="fill_parent" android:textColor="#000"
 		android:layout_height="wrap_content" android:text="@string/enterprice" />
 
 
@@ -29,10 +33,10 @@
 		android:layout_height="wrap_content"></EditText>
 	<RadioGroup android:id="@+id/RadioGroup01"
 		android:layout_width="wrap_content" android:layout_height="wrap_content">
-		<RadioButton android:text="@string/radiogreaterthan"
+		<RadioButton android:text="@string/radiogreaterthan" android:textColor="#000"
 			android:id="@+id/greaterthan" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></RadioButton>
-		<RadioButton android:text="@string/radiolessthan"
+		<RadioButton android:text="@string/radiolessthan" android:textColor="#000"
 			android:id="@+id/lessthan" android:layout_width="wrap_content"
 			android:layout_height="wrap_content"></RadioButton>
 	</RadioGroup>

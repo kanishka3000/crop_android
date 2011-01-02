@@ -14,8 +14,10 @@ import org.apache.http.client.ClientProtocolException;
 import ucsc.crop.util.CProperties;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Bitmap.CompressFormat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +99,7 @@ public class CropViewSorter extends BaseAdapter {
 		LinearLayout lay = new LinearLayout(context);
 		lay.setOrientation(LinearLayout.HORIZONTAL);
 		TextView view = new TextView(context);
+		view.setTextColor(Color.BLACK);
 		view.setPadding(10, 10, 10, 10);
 		if (this.sortoption == SORTED_BY_CROP) {
 			view
@@ -106,9 +109,11 @@ public class CropViewSorter extends BaseAdapter {
 		}
 		lay.addView(view);
 		TextView view2 = new TextView(context);
+		view2.setTextColor(Color.BLACK);
 		view2.setPadding(10, 10, 10, 10);
 		view2.setText(map.get(counter.get(currentlocation)).get(arg0).Price);
 		ImageView imview=new ImageView(context);
+		
 		String ids=map.get(counter.get(currentlocation)).get(arg0).Id;
 //		try {
 //			FileInputStream fi=context.openFileInput(ids+".png");

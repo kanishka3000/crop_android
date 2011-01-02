@@ -17,6 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import ucsc.crop.util.CProperties;
+import ucsc.crop.util.HttpConnect;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -8,6 +8,7 @@ import java.util.Set;
 
 import ucsc.crop.*;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -27,7 +29,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class LocationSelection extends Activity {
+public class Selection extends Activity {
 	Spinner locationselect;
 	Spinner cropselect;
 	EditText pricetext;
@@ -37,6 +39,7 @@ public class LocationSelection extends Activity {
 	Button okbutton;
 	ListView cropview;
 	ListView locationview;
+	ProgressDialog progressDialog;
 
 	ArrayList listoflocations = null;
 	ArrayList listofcrops = null;
@@ -44,16 +47,20 @@ public class LocationSelection extends Activity {
 	Set<String> selectedCrops;
 	Set<String> selectedLocations;
 
+	String pricetype = "lt";
+	String[] selectedcroparray = null;
+	String[] selectedlocationarray = null;
+	String price = null;
 	Set<Crop> listofcropsforview;
 	Crop crops;
 	Activity context;
 
 	static ArrayList<Crop> CropResult;
 
-	public LocationSelection() {
+	public Selection() {
 		selectedCrops = new HashSet();
 		selectedLocations = new HashSet();
-		listofcropsforview=new HashSet<Crop>();
+		listofcropsforview = new HashSet<Crop>();
 		crops = new Crop();
 		context = this;
 	}
@@ -66,15 +73,19 @@ public class LocationSelection extends Activity {
 		selectedLocations.clear();
 
 	}
+
 	private void onListViewLocationClick(AdapterView<?> arg0, int arg2) {
-		selectedLocations.remove((String)arg0.getItemAtPosition(arg2));
-		locationview.setAdapter(new ArrayAdapter<String>(this,R.xml.ress, new ArrayList(selectedLocations)));
+		selectedLocations.remove((String) arg0.getItemAtPosition(arg2));
+		locationview.setAdapter(new ArrayAdapter<String>(this, R.xml.ress,
+				new ArrayList(selectedLocations)));
 	}
+
 	private void onViewCropListSelected(AdapterView<?> arg0, int arg2) {
-		Crop cr=(Crop)arg0.getItemAtPosition(arg2);
+		Crop cr = (Crop) arg0.getItemAtPosition(arg2);
 		selectedCrops.remove(cr.Id);
 		listofcropsforview.remove(cr);
-		cropview.setAdapter(new ArrayAdapter<Crop>(this,R.xml.ress,new ArrayList(listofcropsforview)));
+		cropview.setAdapter(new ArrayAdapter<Crop>(this, R.xml.ress,
+				new ArrayList(listofcropsforview)));
 	}
 
 	private void onLocationSelected(AdapterView<?> arg0, int arg2) {
@@ -82,7 +93,8 @@ public class LocationSelection extends Activity {
 		System.out.println(location + "locationselect");
 		if (!location.equals("NA")) {
 			selectedLocations.add(location);
-			locationview.setAdapter(new ArrayAdapter<String>(this,R.xml.ress, new ArrayList(selectedLocations)));
+			locationview.setAdapter(new ArrayAdapter<String>(this, R.xml.ress,
+					new ArrayList(selectedLocations)));
 		}
 	}
 
@@ -92,40 +104,8 @@ public class LocationSelection extends Activity {
 		if (cr.Id != "NA") {
 			selectedCrops.add(cr.Id);
 			listofcropsforview.add(cr);
-			cropview.setAdapter(new ArrayAdapter<Crop>(this,R.xml.ress,new ArrayList(listofcropsforview)));
-		}
-	}
-
-	private void onOkClick(View arg0) {
-		String pricetype;
-		if (lessthan.isChecked()) {
-			pricetype = "lt";
-		} else {
-			pricetype = "gt";
-		}
-		String price = null;
-		if (!pricetext.getText().toString().equals("0")) {
-			price = pricetext.getText().toString();
-		}
-		String[] selectedcroparray = null;
-		String[] selectedlocationarray = null;
-		if (selectedCrops.size() > 0) {
-			selectedcroparray = selectedCrops.toArray(new String[1]);
-		}
-		if (selectedLocations.size() > 0) {
-			selectedlocationarray = selectedLocations.toArray(new String[1]);
-		}
-
-		try {
-			ArrayList<Crop> cp = crops.getCropValue(selectedcroparray,
-					selectedlocationarray, price, pricetype);
-			System.out.println(cp);
-			CropResult = cp;
-			Intent nextin = new Intent(arg0.getContext(), CropInformation.class);
-			startActivityForResult(nextin, 0);
-		} catch (Exception e) {
-			// System.out.println(e.getMessage());
-			e.printStackTrace();
+			cropview.setAdapter(new ArrayAdapter<Crop>(this, R.xml.ress,
+					new ArrayList(listofcropsforview)));
 		}
 	}
 
@@ -141,13 +121,15 @@ public class LocationSelection extends Activity {
 		lessthan = (RadioButton) findViewById(R.id.lessthan);
 		greaterthan = (RadioButton) findViewById(R.id.greaterthan);
 		cropview = (ListView) findViewById(R.id.croplister);
-		
+		progressDialog = new ProgressDialog(this);
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		progressDialog.show();
 		cropview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				onViewCropListSelected(arg0, arg2);
-				
+
 			}
 		});
 		locationview = (ListView) findViewById(R.id.locationlister);
@@ -156,13 +138,12 @@ public class LocationSelection extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				
+
 				onListViewLocationClick(arg0, arg2);
 			}
 
-		
 		});
-		
+
 		okbutton = (Button) findViewById(R.id.Button01);
 		okbutton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -179,6 +160,7 @@ public class LocationSelection extends Activity {
 					int arg2, long arg3) {
 				onCropSelected(arg0, arg2);
 			}
+
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -204,6 +186,9 @@ public class LocationSelection extends Activity {
 				ArrayAdapter adapter = new ArrayAdapter(sele, R.xml.ress,
 						listoflocations);
 				locationselect.setAdapter(adapter);
+				progressDialog.setMessage("Loaded Locations");
+				progressDialog.setProgress(50);
+
 			}
 		};
 		final Handler fetchAndDisplayCropData = new Handler() {
@@ -212,6 +197,9 @@ public class LocationSelection extends Activity {
 				ArrayAdapter adapter = new ArrayAdapter(sele, R.xml.ress,
 						listofcrops);
 				cropselect.setAdapter(adapter);
+				progressDialog.setMessage("Loaded Crops");
+				progressDialog.setProgress(100);
+				progressDialog.dismiss();
 			}
 		};
 
@@ -252,5 +240,72 @@ public class LocationSelection extends Activity {
 		};
 		fetchLocationData.execute(null, null, null);
 
+	}
+
+	final Handler displayandProgress = new Handler() {
+		public void handleMessage(Message message) {
+			Intent nextin = new Intent(context, CropInformation.class);
+			startActivityForResult(nextin, 0);
+		}
+
+	};
+
+	private void onOkClick(View arg0) {
+		
+
+		if (greaterthan.isChecked()) {
+			pricetype = "gt";
+		} else {
+			pricetype = "lt";
+		}
+
+		if (!pricetext.getText().toString().equals("0")) {
+			price = pricetext.getText().toString();
+
+		}
+
+		if (selectedCrops.size() > 0) {
+			selectedcroparray = selectedCrops.toArray(new String[1]);
+		}
+		if (selectedLocations.size() > 0) {
+			selectedlocationarray = selectedLocations.toArray(new String[1]);
+		}
+		if (selectedcroparray == null && selectedlocationarray == null
+				&& price == null) {
+			System.out.println("not selected");
+			return;
+		}
+		progressDialog.show();
+		progressDialog.setProgress(30);
+
+		try {
+			AsyncTask<Object, Object, Object> fetchCropPrice = new AsyncTask<Object, Object, Object>() {
+
+				@Override
+				protected Object doInBackground(Object... arg0) {
+					ArrayList<Crop> cp = null;
+					try {
+						cp = crops.getCropValue(selectedcroparray,
+								selectedlocationarray, price, pricetype);
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+					}
+					System.out.println(cp);
+					progressDialog.setProgress(100);
+					progressDialog.dismiss();
+					CropResult = cp;
+					displayandProgress.sendMessage(displayandProgress
+							.obtainMessage());
+					return null;
+				}
+
+			};
+			fetchCropPrice.execute(null, null, null);
+
+		} catch (Exception e) {
+			// System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 }

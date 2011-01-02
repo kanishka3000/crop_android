@@ -1,4 +1,4 @@
-package ucsc.crop;
+package ucsc.crop.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

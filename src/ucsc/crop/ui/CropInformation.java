@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class CropInformation extends Activity {
@@ -23,11 +24,11 @@ public class CropInformation extends Activity {
 	TextView topic;
 TextView topicsortedby;
 	
-	Button nextButton;
-	Button previousButton;
-	Button toogleButton;
+	ImageButton nextButton;
+	ImageButton previousButton;
+	ImageButton toogleButton;
 	
-	Button homeButton;
+	ImageButton homeButton;
 	
 	int tooglestatus = TOOGLE_STATUS_CROP;
 
@@ -46,7 +47,7 @@ TextView topicsortedby;
 		display.setAdapter(sorter);
 	}
 	private void homeButtonClick(View arg0) {
-		Intent hom=new Intent(arg0.getContext(), LocationSelection.class);
+		Intent hom=new Intent(arg0.getContext(), Selection.class);
 		startActivityForResult(hom, 0);
 	}
 	private void toogleButtonClick() {
@@ -56,7 +57,7 @@ TextView topicsortedby;
 			display.setAdapter(sorter);
 			tooglestatus = TOOGLE_STATUS_LOCATION;
 			topic.setText(sorter.getCurrentTopic());
-			toogleButton.setText("Crop");
+			//toogleButton.setText("Crop");
 		} else {
 			sorter = new CropViewSorter(
 					Crop.sort(Crop.SORTBY_CROP, cropResult), this,CropViewSorter.SORTED_BY_CROP);
@@ -64,7 +65,7 @@ TextView topicsortedby;
 			display.setAdapter(sorter);
 			tooglestatus=TOOGLE_STATUS_CROP;
 			topic.setText(sorter.getCurrentTopic());
-			toogleButton.setText("Location");
+			//toogleButton.setText("Location");
 		}
 	}
 
@@ -74,8 +75,8 @@ TextView topicsortedby;
 		setContentView(R.layout.main);
 		topic = (TextView) findViewById(R.id.topic);
 		topicsortedby=(TextView)findViewById(R.id.topicsortedby);
-		nextButton = (Button) findViewById(R.id.nextbutton);
-		cropResult = LocationSelection.CropResult;
+		nextButton = (ImageButton) findViewById(R.id.nextbutton);
+		cropResult = Selection.CropResult;
 		sorter = new CropViewSorter(Crop.sort(Crop.SORTBY_CROP, cropResult),
 				this,CropViewSorter.SORTED_BY_CROP);
 		topic.setText(sorter.getCurrentTopic());
@@ -87,7 +88,7 @@ TextView topicsortedby;
 				nextButtonClick();
 			}
 		});
-		previousButton = (Button) findViewById(R.id.prevbutton);
+		previousButton = (ImageButton) findViewById(R.id.prevbutton);
 		previousButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -95,7 +96,7 @@ TextView topicsortedby;
 			}
 
 		});
-		toogleButton = (Button) findViewById(R.id.togglebutton);
+		toogleButton = (ImageButton) findViewById(R.id.togglebutton);
 		toogleButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -104,7 +105,7 @@ TextView topicsortedby;
 			}
 
 		});
-		homeButton= (Button) findViewById(R.id.home);
+		homeButton= (ImageButton) findViewById(R.id.home);
 		homeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
