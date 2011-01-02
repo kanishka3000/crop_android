@@ -3,18 +3,19 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical"
 	android:background="@drawable/podda2"
+	android:padding="15px"
 	>
 
 
 	<TextView android:layout_width="fill_parent" android:textColor="#000"
-		android:layout_height="wrap_content" android:text="@string/selectcrop" />
+		android:layout_height="wrap_content" android:text="@string/selectcrop" android:padding="10px"/>
 	<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
 	<Spinner android:id="@+id/locationspinner" android:layout_width="wrap_content"
 	android:textColor="#000"
 		android:layout_height="wrap_content"></Spinner>
 		<ListView android:textColor="#000" android:id="@+id/croplister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
 		</LinearLayout>
-	<TextView android:layout_width="fill_parent" android:textColor="#000"
+	<TextView android:layout_width="fill_parent" android:textColor="#000" android:padding="15px"
 		android:layout_height="wrap_content" android:text="@string/selectlocation" />
 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
 	<Spinner android:id="@+id/cropspinner"
@@ -23,7 +24,7 @@
 		<ListView android:textColor="#000" android:id="@+id/locationlister" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
 		</LinearLayout>
 	<TextView android:layout_width="fill_parent" android:textColor="#000"
-		android:layout_height="wrap_content" android:text="@string/enterprice" />
+		android:layout_height="wrap_content" android:text="@string/enterprice" android:padding="15px"/>
 
 
 
@@ -31,7 +32,7 @@
 	<EditText android:text="@string/pricetextdefaultvalue"
 		android:id="@+id/pricetext" android:layout_width="200px"
 		android:layout_height="wrap_content"></EditText>
-	<RadioGroup android:id="@+id/RadioGroup01"
+	<RadioGroup android:id="@+id/RadioGroup01" android:orientation="horizontal"
 		android:layout_width="wrap_content" android:layout_height="wrap_content">
 		<RadioButton android:text="@string/radiogreaterthan" android:textColor="#000"
 			android:id="@+id/greaterthan" android:layout_width="wrap_content"
@@ -41,7 +42,7 @@
 			android:layout_height="wrap_content"></RadioButton>
 	</RadioGroup>
 
-	<Button android:text="@string/buttonsearch" android:id="@+id/Button01"
+	<Button android:text="@string/buttonsearch" android:id="@+id/selectbutton"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
 
 

@@ -17,7 +17,7 @@ public class StartUp extends Activity{
 	}
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.cropselection);
+		setContentView(R.layout.startup);
 		SearchLink=(ImageButton)findViewById(R.id.widget71);
 		SearchLink.setOnClickListener(new OnClickListener() {
 			@Override

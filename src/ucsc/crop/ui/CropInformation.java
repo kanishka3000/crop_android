@@ -72,7 +72,7 @@ TextView topicsortedby;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.cropinformation);
 		topic = (TextView) findViewById(R.id.topic);
 		topicsortedby=(TextView)findViewById(R.id.topicsortedby);
 		nextButton = (ImageButton) findViewById(R.id.nextbutton);

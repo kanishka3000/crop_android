@@ -49,7 +49,7 @@ public class Crop {
 
 	public Crop() {
 		URL = CProperties.getInstance().getProperty("server")+"/getCropService?";
-		URLIMG=CProperties.getInstance().getProperty("server")+"/pics/CDM.png";
+		URLIMG=CProperties.getInstance().getProperty("server")+"/pics/";
 	}
 
 	public static Map<String, ArrayList<Crop>> sort(int method,
@@ -206,7 +206,8 @@ public class Crop {
 
 	private void fixImage(Crop crop) throws ClientProtocolException,
 			IOException {
-		crop.cropimage=BitmapFactory.decodeStream(new HttpConnect().getString(URLIMG));
+		System.out.println(URLIMG+crop.Id+".png");
+		crop.cropimage=BitmapFactory.decodeStream(new HttpConnect().getString(URLIMG+crop.Id+".png"));
 		
 //		File fi=new File("croidm");
 //		FileOutputStream ou= new FileOutputStream(fi);

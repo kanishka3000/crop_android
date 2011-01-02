@@ -144,7 +144,7 @@ public class Selection extends Activity {
 
 		});
 
-		okbutton = (Button) findViewById(R.id.Button01);
+		okbutton = (Button) findViewById(R.id.selectbutton);
 		okbutton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

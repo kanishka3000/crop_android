@@ -9,7 +9,7 @@ android:background="@drawable/podda2"
 >
 <LinearLayout
 android:id="@+id/widget161"
-android:layout_width="320px"
+android:layout_width="fill_parent"
 android:layout_height="49px"
 >
 <ImageButton android:background="@android:color/transparent"
@@ -18,6 +18,7 @@ android:id="@+id/togglebutton"
 android:layout_width="100px"
 android:layout_height="50px"
 android:layout_marginLeft="25px"
+
 android:layout_marginTop="10px"
 android:src="@drawable/loca2"
 
@@ -28,9 +29,31 @@ android:id="@+id/home"
 
 android:layout_width="100px"
 android:layout_height="50px"
-android:layout_marginLeft="10px"
+android:layout_marginRight="25px"
 android:layout_marginTop="10px"
 android:src="@drawable/home2"
+>
+</ImageButton>
+</LinearLayout>
+<LinearLayout
+android:id="@+id/widget171"
+android:layout_width="fill_parent"
+android:layout_height="54px"
+>
+<ImageButton android:background="@android:color/transparent"
+android:id="@+id/prevbutton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginLeft="70px"
+android:src="@drawable/one"
+>
+</ImageButton>
+<ImageButton android:background="@android:color/transparent"
+android:id="@+id/nextbutton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginLeft="100px"
+android:src="@drawable/two"
 >
 </ImageButton>
 </LinearLayout>
@@ -59,26 +82,5 @@ android:textColor="#000"
 />
 
 
-<LinearLayout
-android:id="@+id/widget171"
-android:layout_width="320px"
-android:layout_height="54px"
->
-<ImageButton android:background="@android:color/transparent"
-android:id="@+id/prevbutton"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginLeft="70px"
-android:src="@drawable/one"
->
-</ImageButton>
-<ImageButton android:background="@android:color/transparent"
-android:id="@+id/nextbutton"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginLeft="100px"
-android:src="@drawable/two"
->
-</ImageButton>
-</LinearLayout>
+
 </LinearLayout>
