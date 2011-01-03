@@ -98,8 +98,11 @@ public class Crop {
 			filURL(crop_list);
 		}
 		if (location_list != null && location_list.length > 0) {
-			if (!first)
+			if (!first){
 				URL += "&";
+				}else{
+					first=false;
+				}
 			URL += (LOCATION_VALUES + "=");
 			filURL(location_list);
 		}

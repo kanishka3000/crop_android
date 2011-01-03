@@ -98,8 +98,13 @@ public class CropViewSorter extends BaseAdapter {
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		LinearLayout lay = new LinearLayout(context);
 		lay.setOrientation(LinearLayout.HORIZONTAL);
+		ImageView imview=new ImageView(context);
+		imview.setImageBitmap(map.get(counter.get(currentlocation)).get(arg0).cropimage);
+		lay.addView(imview);
 		TextView view = new TextView(context);
 		view.setTextColor(Color.BLACK);
+		view.setWidth(150);
+		
 		view.setPadding(10, 10, 10, 10);
 		if (this.sortoption == SORTED_BY_CROP) {
 			view
@@ -112,7 +117,7 @@ public class CropViewSorter extends BaseAdapter {
 		view2.setTextColor(Color.BLACK);
 		view2.setPadding(10, 10, 10, 10);
 		view2.setText(map.get(counter.get(currentlocation)).get(arg0).Price);
-		ImageView imview=new ImageView(context);
+		
 		
 		String ids=map.get(counter.get(currentlocation)).get(arg0).Id;
 //		try {
@@ -139,10 +144,10 @@ public class CropViewSorter extends BaseAdapter {
 //		
 		
 		
-		imview.setImageBitmap(map.get(counter.get(currentlocation)).get(arg0).cropimage);
+		
 		
 		lay.addView(view2);
-		lay.addView(imview);
+		
 		
 		return lay;
 	}

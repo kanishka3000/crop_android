@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="englishhelp">
+Features \n
+1. Multiple selection of crops for search. \n
+you can select multiple crops from the combo box
+and remove them from selection by clicking on the name 
+on selected crops box\n
+2 Multiple selection of crops for search. \n
+you can select multiple locations from the combo box
+and remove them from selection by clicking on the name 
+on selected locations box\n
+3.You can do multiple selection of crops, locations and price range at the same time\n
+4.Scroll the list of results if you can not see them all
+
+
+</string>
+</resources>

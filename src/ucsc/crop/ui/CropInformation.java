@@ -8,6 +8,8 @@ import ucsc.crop.R;
 import ucsc.crop.R.layout;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,7 +59,7 @@ TextView topicsortedby;
 			display.setAdapter(sorter);
 			tooglestatus = TOOGLE_STATUS_LOCATION;
 			topic.setText(sorter.getCurrentTopic());
-			//toogleButton.setText("Crop");
+			toogleButton.setImageResource(R.drawable.crop);
 		} else {
 			sorter = new CropViewSorter(
 					Crop.sort(Crop.SORTBY_CROP, cropResult), this,CropViewSorter.SORTED_BY_CROP);
@@ -65,6 +67,7 @@ TextView topicsortedby;
 			display.setAdapter(sorter);
 			tooglestatus=TOOGLE_STATUS_CROP;
 			topic.setText(sorter.getCurrentTopic());
+			toogleButton.setImageResource(R.drawable.loca2);
 			//toogleButton.setText("Location");
 		}
 	}

@@ -10,10 +10,15 @@ import android.widget.ImageButton;
 
 public class StartUp extends Activity{
 	ImageButton SearchLink;
+	ImageButton HelpLink;
 	private void onSearchClick() {
 		Intent toSearch=new Intent(this, Selection.class);
 		startActivityForResult(toSearch, 0);
 		
+	}
+	private void onHelpClick() {
+		Intent toSearch=new Intent(this, Help.class);
+		startActivityForResult(toSearch, 0);
 	}
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +28,16 @@ public class StartUp extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				onSearchClick();
+				
+			}
+		
+		});
+		HelpLink = (ImageButton)findViewById(R.id.widget70);
+		HelpLink.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				onHelpClick();
 				
 			}
 

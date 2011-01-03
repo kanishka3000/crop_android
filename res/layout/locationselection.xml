@@ -5,8 +5,6 @@
 	android:background="@drawable/podda2"
 	android:padding="15px"
 	>
-
-
 	<TextView android:layout_width="fill_parent" android:textColor="#000"
 		android:layout_height="wrap_content" android:text="@string/selectcrop" android:padding="10px"/>
 	<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
@@ -25,9 +23,6 @@
 		</LinearLayout>
 	<TextView android:layout_width="fill_parent" android:textColor="#000"
 		android:layout_height="wrap_content" android:text="@string/enterprice" android:padding="15px"/>
-
-
-
 
 	<EditText android:text="@string/pricetextdefaultvalue"
 		android:id="@+id/pricetext" android:layout_width="200px"

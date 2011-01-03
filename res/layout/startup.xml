@@ -1,60 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-android:id="@+id/widget44"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:orientation="vertical"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:background="@drawable/podda2"
->
-<ImageButton android:background="@android:color/transparent"
-android:id="@+id/widget65"
-android:layout_width="320px"
-android:layout_height="235px"
-android:src="@drawable/mark2"
->
-</ImageButton>
-<LinearLayout
-android:id="@+id/widget69"
-android:layout_width="320px"
-android:layout_height="90px"
->
-<ImageButton android:background="@android:color/transparent"
-android:id="@+id/widget70"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:width="139px"
-android:height="130px"
-android:layout_marginLeft="25px"
-android:src="@drawable/but1"
->
-</ImageButton>
-<ImageButton android:background="@android:color/transparent"
-android:id="@+id/widget71"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:width="90px"
-android:height="80px"
-android:src="@drawable/but2"
->
+<LinearLayout android:id="@+id/widget44"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@drawable/podda2">
+	<ImageButton android:background="@android:color/transparent"
+		android:id="@+id/widget65" android:layout_width="320px"
+		android:layout_height="235px" android:src="@drawable/mark2">
+	</ImageButton>
+	<LinearLayout android:id="@+id/widget69"
+		android:layout_width="320px" android:layout_height="90px">
+		<ImageButton android:background="@android:color/transparent"
+			android:id="@+id/widget70" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:width="139px"
+			android:height="130px" android:layout_marginLeft="25px" android:src="@drawable/but1">
+		</ImageButton>
+		<ImageButton android:background="@android:color/transparent"
+			android:id="@+id/widget71" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:width="90px"
+			android:height="80px" android:src="@drawable/but2">
 
-</ImageButton>
-<ImageButton android:background="@android:color/transparent"
-android:id="@+id/widget72"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:width="90px"
-android:height="80px"
-android:src="@drawable/but3"
->
-</ImageButton>
-</LinearLayout>
-<ProgressBar
-android:id="@+id/widget73"
-android:layout_width="69px"
-android:layout_height="60px"
-android:layout_marginTop="20px"
-android:layout_marginLeft="130px"
->
-</ProgressBar>
+		</ImageButton>
+		
+	</LinearLayout>
+	<ProgressBar android:id="@+id/widget73"
+		android:layout_width="69px" android:layout_height="60px"
+		android:layout_marginTop="20px" android:layout_marginLeft="130px">
+	</ProgressBar>
 </LinearLayout>
