@@ -23,7 +23,6 @@
 		</LinearLayout>
 	<TextView android:layout_width="fill_parent" android:textColor="#000"
 		android:layout_height="wrap_content" android:text="@string/enterprice" android:padding="15px"/>
-
 	<EditText android:text="@string/pricetextdefaultvalue"
 		android:id="@+id/pricetext" android:layout_width="200px"
 		android:layout_height="wrap_content"></EditText>
@@ -39,7 +38,6 @@
 
 	<Button android:text="@string/buttonsearch" android:id="@+id/selectbutton"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-
 
 
 </LinearLayout>

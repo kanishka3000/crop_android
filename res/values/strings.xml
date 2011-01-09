@@ -11,5 +11,6 @@
 	<string name="app_name">Sri Lanka Crop Information!</string>
 	<string name="pricetextdefaultvalue">0</string>
 	<string name="helpback">Back</string>
+	<string name="exitmenu">Exit</string>
 
 </resources>

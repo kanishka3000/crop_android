@@ -14,6 +14,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -72,6 +74,12 @@ public class Selection extends Activity {
 		selectedCrops.clear();
 		selectedLocations.clear();
 
+	}
+
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menuselection, menu);
+		return true;
 	}
 
 	private void onListViewLocationClick(AdapterView<?> arg0, int arg2) {
@@ -251,17 +259,14 @@ public class Selection extends Activity {
 	};
 
 	private void onOkClick(View arg0) {
-		
 
 		if (greaterthan.isChecked()) {
 			pricetype = "gt";
 		} else {
 			pricetype = "lt";
 		}
-
 		if (!pricetext.getText().toString().equals("0")) {
 			price = pricetext.getText().toString();
-
 		}
 
 		if (selectedCrops.size() > 0) {
@@ -277,10 +282,8 @@ public class Selection extends Activity {
 		}
 		progressDialog.show();
 		progressDialog.setProgress(30);
-
 		try {
 			AsyncTask<Object, Object, Object> fetchCropPrice = new AsyncTask<Object, Object, Object>() {
-
 				@Override
 				protected Object doInBackground(Object... arg0) {
 					ArrayList<Crop> cp = null;
@@ -288,7 +291,6 @@ public class Selection extends Activity {
 						cp = crops.getCropValue(selectedcroparray,
 								selectedlocationarray, price, pricetype);
 					} catch (Exception e) {
-						
 						e.printStackTrace();
 					}
 					System.out.println(cp);

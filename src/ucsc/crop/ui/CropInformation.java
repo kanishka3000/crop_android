@@ -12,6 +12,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -41,6 +43,11 @@ TextView topicsortedby;
 		sorter.next();
 		topic.setText(sorter.getCurrentTopic());
 		display.setAdapter(sorter);
+	}
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menuinformation, menu);
+		return true;
 	}
 
 	private void prevButtonClick() {
