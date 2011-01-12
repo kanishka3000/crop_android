@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-     <item android:id="@+id/exitmenu"      
-          android:title="@string/exitmenu" 
-          android:icon="@drawable/applicaexit"
+     <item android:id="@+id/homemenu"      
+          android:title="@string/backmenu" 
+          android:icon="@drawable/homemenu"
           />
 </menu>

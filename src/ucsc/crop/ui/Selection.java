@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -81,6 +82,20 @@ public class Selection extends Activity {
 		inflater.inflate(R.menu.menuselection, menu);
 		return true;
 	}
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id=item.getItemId();
+		switch (id){
+		case R.id.exitmenu:
+			exit();
+		return true;
+		
+		}
+		return true;
+	}
+	private void exit() {
+		onOkClick(okbutton);
+	}
+
 
 	private void onListViewLocationClick(AdapterView<?> arg0, int arg2) {
 		selectedLocations.remove((String) arg0.getItemAtPosition(arg2));

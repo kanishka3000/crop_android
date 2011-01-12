@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -48,6 +49,20 @@ TextView topicsortedby;
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menuinformation, menu);
 		return true;
+	}
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id=item.getItemId();
+		switch (id){
+		case R.id.homemenu:
+			homeButtonClick(homeButton);
+		return true;
+		
+		}
+		return true;
+	}
+	private void exit() {
+		super.onDestroy();
+		this.finish();
 	}
 
 	private void prevButtonClick() {
